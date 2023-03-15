@@ -1,25 +1,58 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import CakeList from './components/CakeList';
+import { initialCakes } from './mock/config.js';
+import { users } from './utils/users.js';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [cakes, setCakes] = useState(initialCakes);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  // Event handler function for user login
+  const handleLogin = (email, password) => {
+    const user = users.find((user) => user.email === email && user.password === password);
+    if (user) {
+      setLoggedInUser({ email: `${user.email} (${user.name})` });
+    }
+  };
+
+  // Event handler function for user logout
+  const handleLogout = () => {
+    setLoggedInUser(null);
+  };
+
+  // Event handler function for adding a new cake to the list
+  const handleAddCake = (cake) => {
+    setCakes([...cakes, cake]);
+  };
+
+  // Event handler function for updating a cake in the list
+  const handleUpdateCake = (id, updatedCake) => {
+    const updatedCakes = cakes.map((cake) => (cake.id === id ? updatedCake : cake));
+    setCakes(updatedCakes);
+  };
+
+  // Event handler function for deleting a cake from the list
+  const handleDeleteCake = (id) => {
+    const updatedCakes = cakes.filter((cake) => cake.id !== id);
+    setCakes(updatedCakes);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col min-h-screen font-dancing-script">
+      <Header loggedInUser={loggedInUser} onLogin={handleLogin} onLogout={handleLogout} />
+      <div className="container mx-auto flex-grow">
+        <CakeList
+          cakes={cakes}
+          loggedInUser={loggedInUser}
+          onAddCake={handleAddCake}
+          onUpdateCake={handleUpdateCake}
+          onDeleteCake={handleDeleteCake}
+        />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
