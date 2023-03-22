@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import CakeList from './components/CakeList';
 import { initialCakes } from './mock/config.js';
-import { users } from './utils/users.js';
+import { users } from './services/userService';
 import './App.css';
 
 const App = () => {

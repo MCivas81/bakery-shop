@@ -1,3 +1,4 @@
+// Array of user objects with their email, password, and name
 export const users = [
   {
     email: 'luana@test.com',
