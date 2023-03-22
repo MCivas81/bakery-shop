@@ -10,10 +10,8 @@ const CakeItem = ({ cakes, cake, loggedInUser, onUpdateCake, onDeleteCake }) => 
 
   // Function to handle increasing cake availability
   const handleIncreaseAvailability = () => {
-    // Calculate new availability and price
-    let newAvailability = cake.availability + 1;
+    const newAvailability = cake.availability + 1;
 
-    // Create new cake object with updated availability and price
     const newCake = {
       ...cake,
       availability: newAvailability,
@@ -23,7 +21,7 @@ const CakeItem = ({ cakes, cake, loggedInUser, onUpdateCake, onDeleteCake }) => 
 
   // Function to handle decreasing cake availability
   const handleDecreaseAvailability = () => {
-    let newAvailability = cake.availability > 0 ? cake.availability - 1 : 0;
+    const newAvailability = cake.availability > 0 ? cake.availability - 1 : 0;
 
     const newCake = {
       ...cake,
@@ -50,7 +48,7 @@ const CakeItem = ({ cakes, cake, loggedInUser, onUpdateCake, onDeleteCake }) => 
   };
 
   useEffect(() => {
-    if (cakes.length > 0) {
+    if (cakes?.length > 0) {
       const twentyPercentDiscount = cake.price * 0.8;
       const eightyPercentDiscount = cake.price * 0.2;
       const day = 24 * 60 * 60 * 1000;
@@ -111,7 +109,7 @@ const CakeItem = ({ cakes, cake, loggedInUser, onUpdateCake, onDeleteCake }) => 
       <img
         src={cake.image}
         alt={cake.name}
-        className="mx-auto w-72 h-52 object-contain rounded-lg cursor-pointer"
+        className="mx-auto min-w-72 h-52 object-contain rounded-lg cursor-pointer"
         onClick={handleOpenModal}
       />
       <div
