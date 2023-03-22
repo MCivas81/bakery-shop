@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getUniqueID } from '../utils/uniqueID';
 import imagenotavailable from '../assets/images/imagenotavailable.png';
 
 const AddCakeForm = ({ onAddCake, cakes }) => {
@@ -11,10 +12,6 @@ const AddCakeForm = ({ onAddCake, cakes }) => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const getUniqueID = () => {
-      return Math.floor(Date.now() * Math.random());
-    };
 
     // Create a new cake object with form inputs and default values
     const cake = {
