@@ -47,7 +47,7 @@ const AddCakeForm = ({ onAddCake, cakes }) => {
   };
 
   return (
-    <div className="border-2 border-indigo-500 bg-indigo-100 rounded-lg my-6 md:mx-0 md:my-10 w-full md:w-3/4 lg:w-1/2">
+    <div className="border-2 border-indigo-500 bg-indigo-100 rounded-lg my-16 md:mx-0 w-full md:w-3/4 lg:w-1/2">
       <div className="flex justify-center py-2 text-indigo-500 mb-6">
         <h3 className="text-3xl md:text-5xl font-medium mb-5 mt-5">Aggiungi un dolce</h3>
       </div>

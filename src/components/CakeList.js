@@ -11,7 +11,7 @@ const CakeList = ({ cakes, loggedInUser, onAddCake, onUpdateCake, onDeleteCake }
           </h3>
         </div>
       ) : (
-        <div className="flex justify-center my-20">
+        <div className="flex justify-center mb-20">
           <h3 className="text-4xl text-rose-700 md:text-5xl font-medium">
             La nostra selezione di dolci:
           </h3>
